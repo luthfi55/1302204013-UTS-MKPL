@@ -29,7 +29,7 @@ public class Employee extends Profile{
 	}
 	
 	
-	public int getAnnualIncomeTax() {		
+	public int getAnnualIncomeTax(Salary salary) {		
 		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
 		LocalDate date = LocalDate.now();
                 boolean haveSpouse = spouseIdNumber != 0;              
@@ -40,6 +40,6 @@ public class Employee extends Profile{
 			monthWorkingInYear = 12;
 		}
 		
-		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, haveSpouse, childIdNumbers.size());
+		return TaxFunction.calculateTax(salary, monthWorkingInYear, haveSpouse, childIdNumbers.size());
 	}
 }
