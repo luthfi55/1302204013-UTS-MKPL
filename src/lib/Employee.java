@@ -1,9 +1,6 @@
 package lib;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Employee extends Profile{
            	
@@ -23,23 +20,23 @@ public class Employee extends Profile{
                 this.setGender(profile.getGender());
 		
                 this.setChildNames(family.getChildNames());
-                this.setChildIdNumbers(family.getChildIdNumbers());
-		childNames = new LinkedList<String>();
-		childIdNumbers = new LinkedList<String>();
+                this.setChildIdNumbers(family.getChildIdNumbers());		
 	}
 	
 	
 	public int getAnnualIncomeTax(Salary salary) {		
-		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
-		LocalDate date = LocalDate.now();
+		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.		
                 boolean haveSpouse = spouseIdNumber != 0;              
-		
-		if (date.getYear() == joined.getYear()) {
-			monthWorkingInYear = date.getMonthValue() - joined.getMonthValue();
-		}else {
-			monthWorkingInYear = 12;
-		}
-		
+		monthWorkingInYear = getMonthWorking();
 		return TaxFunction.calculateTax(salary, monthWorkingInYear, haveSpouse, childIdNumbers.size());
 	}
+        
+        public int getMonthWorking(){
+                LocalDate date = LocalDate.now();
+                if (date.getYear() == joined.getYear()) {
+			return date.getMonthValue() - joined.getMonthValue();
+		}else {
+			return 12;
+		}
+        }
 }
