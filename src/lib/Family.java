@@ -28,4 +28,20 @@ public class Family extends Salary{
 		childNames.add(childName);
 		childIdNumbers.add(childIdNumber);
 	}
+        
+        public List<String> getChildNames() {
+            return childNames;
+        }
+
+        public void setChildNames(List<String> childNames) {
+            this.childNames = childNames;
+        }
+
+        public List<String> getChildIdNumbers() {
+            return childIdNumbers;
+        }
+
+        public void setChildIdNumbers(List<String> childIdNumbers) {
+            this.childIdNumbers = childIdNumbers;
+        }
 }

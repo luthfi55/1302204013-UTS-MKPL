@@ -12,16 +12,18 @@ public class Employee extends Profile{
 	public boolean isForeigner;
 		
 	
-	public Employee(int employeeId, String firstName, String lastName, int idNumber, String address, LocalDate joined, boolean isForeigner, genderType gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
+	public Employee(Profile profile, LocalDate joined, boolean isForeigner, Family family) {
+                this.setEmployeeId(profile.getEmployeeId());
+                this.setFirstName(profile.getFirstName());
+                this.setLastName(profile.getLastName());
+                this.setIdNumber(profile.getIdNumber());
+                this.setAddress(profile.getAddress());
 		this.joined = joined;
-		this.isForeigner = isForeigner;
-		this.gender = gender;
+		this.isForeigner = isForeigner;		
+                this.setGender(profile.getGender());
 		
+                this.setChildNames(family.getChildNames());
+                this.setChildIdNumbers(family.getChildIdNumbers());
 		childNames = new LinkedList<String>();
 		childIdNumbers = new LinkedList<String>();
 	}
