@@ -20,7 +20,7 @@ public class Profile extends Family{
     public String lastName;
     public int idNumber;
     public String address;    
-    public genderType gender; //true = Laki-laki, false = Perempuan
+    public genderType gender;
     
     public int getEmployeeId(){
         return employeeId;
